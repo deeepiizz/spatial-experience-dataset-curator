@@ -15,7 +15,11 @@ jobs:
         with:
           python-version: "3.12"
           cache: pip
-      - run: pip install -e ".[dev]"
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "17"
+      - run: pip install -e ".[dev,spark]"
       - name: Download sources from Zenodo (md5 and licence checked)
         run: python -m curator.pipeline
       - run: pytest -v

@@ -13,7 +13,7 @@ every row, and a pytest suite that checks every mapping against the raw files.
 | **Sources** | 4 Zenodo datasets, all CC-BY-4.0 |
 | **Environments** | real library (indoor), two VR environments, urban street images |
 | **Tasks** | navigation (time, errors, path length, success) and rating (1–7 perceived safety) |
-| **Tests** | 45, including a source-isolation test and checks that rebuild each source's own totals |
+| **Tests** | 53, including a source-isolation test, checks that rebuild each source's own totals, and pandas-vs-Spark parity |
 
 The combined table is in [`data/processed/trials.csv`](data/processed/trials.csv), with a
 per-source overview in [`source_summary.csv`](data/processed/source_summary.csv).
@@ -178,6 +178,63 @@ Code: MIT. The combined dataset is adapted from CC-BY-4.0 sources and shared und
 with each row citing its source. See [`data/processed/LICENSE.md`](data/processed/LICENSE.md).
 The original authors have not endorsed this compilation.
 
+## Big data: the same pipeline in PySpark
+
+The combined table has 6,513 rows, so it does not need Spark. I wrote
+[`spark_job.py`](src/curator/spark_job.py) to practise the Spark version of the same
+work on data I can check, and to measure where the switch starts to pay off.
+
+```bash
+pip install -e ".[dev,spark]"      # needs Java 17+
+python -m curator.spark_job        # summary + README analyses in Spark, writes Parquet
+python -m curator.spark_job --bench 1 10 100 1000 3000
+```
+
+**What it does.** It reads `trials.csv` with a declared schema instead of inferring one. It
+rebuilds the per-source summary and the README's numbers. A window function finds each
+participant's first search, `from_json` parses the Athens road features, and `pivot` puts
+the transport modes into columns. The table is written as Parquet, partitioned by source.
+
+**How it is checked.** `tests/test_spark.py` (7 tests) asserts that the Spark summary
+equals `pipeline.summarise` and the committed `source_summary.csv` cell for cell, and that
+the README's numbers come out the same. Getting the summary to match exactly needed two
+fixes: `bround` instead of `round`, because pandas rounds half to even, and the exact
+`median`, which interpolates like pandas does.
+
+**Scaling it up.** The benchmark stacks copies of the table. Each copy gets new participant
+IDs and keeps the same values. So every median and mean must stay the same, and every count
+must grow by the number of copies. A test checks this, so the large runs can be verified,
+which random synthetic data would not allow. The summary was timed on one 4-core,
+15 GB machine (Spark `local[*]`). Each time is the best of two runs, after a warm-up.
+
+| Rows | Parquet on disk | pandas in memory | pandas | Spark, exact | Spark, approx. |
+|---:|---:|---:|---:|---:|---:|
+| 6,513 | 0.1 MB | 1 MB | 0.02 s | 0.56 s | 1.48 s |
+| 651,300 | 3.7 MB | 152 MB | 0.24 s | 2.28 s | 1.64 s |
+| 6,513,000 | 51 MB | 1.5 GB | 2.6 s | 26.6 s | 6.0 s |
+| 19,539,000 | 189 MB | 4.6 GB | 11.3 s | 97.5 s | 15.6 s |
+
+What I took from it:
+
+- **On one machine, pandas wins at every size I tried.** Spark has fixed costs that pandas
+  does not: scheduling tasks, shuffling data between them, and running a JVM next to
+  Python. Those costs only pay back once the work is spread over several machines.
+- **pandas runs out of memory, Spark does not.** pandas needs about 235 bytes per row
+  in memory, so on this 15 GB machine it would run out at around 60 million rows.
+  That is an estimate from the table above, not a run. Spark reads Parquet in chunks and
+  writes to disk when memory fills, so its limit is the disk, and on a cluster, the
+  number of machines.
+- **Exact distinct counts and medians are the slow part.** `explain()` shows that two
+  `countDistinct`s in one `groupBy` make Spark copy every row three times, once per
+  distinct column. An exact median has to bring every value of a group together in one
+  place. With `approx_count_distinct` and `percentile_approx` (`summarise(exact=False)`),
+  the 19.5M-row summary drops from 97 s to 16 s. The cost is that counts and medians are
+  off by up to 1.3%. For example, the library has 95 participants and the approximate
+  count says 94. Its median is 230 s and the approximate one is 227 s, because
+  `percentile_approx` returns a real value from the data instead of the midpoint of the two middle values.
+  For a data card I would keep the exact numbers. For monitoring a large table, I would use
+  the approximate ones.
+
 ## Power BI dashboard
 
 [`powerbi/`](powerbi/) has the combined data as a star schema (one fact table, three dimensions
@@ -194,6 +251,7 @@ src/curator/sources.py       verified Zenodo download
 src/curator/adapters/        one adapter per source
 src/curator/pipeline.py      build -> validate -> write data/processed/
 src/curator/powerbi_export.py  star schema for Power BI -> powerbi/data/
+src/curator/spark_job.py     the same summary and analyses in PySpark, + benchmark
 powerbi/                     DAX measures and dashboard build guide
-tests/                       schema, per-source faithfulness, isolation
+tests/                       schema, per-source faithfulness, isolation, Spark parity
 ```
