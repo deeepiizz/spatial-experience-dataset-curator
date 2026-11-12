@@ -1,0 +1,2 @@
+expression DataFolder = "C:\spatial-experience-dataset-curator\powerbi\data\" meta [IsParameterQuery = true, Type = "Text", IsParameterQueryRequired = true]
+	lineageTag: def83f8f-36ac-5e01-ad2a-61356ff88956

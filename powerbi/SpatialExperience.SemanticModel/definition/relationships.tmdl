@@ -1,0 +1,15 @@
+relationship cf779ff4-61ad-5dbf-b087-0455c088313c
+	fromColumn: fact_trials.source_id
+	toColumn: dim_source.source_id
+
+relationship 064de894-422c-5fcc-b175-6b66e23f544f
+	fromColumn: fact_trials.participant_id
+	toColumn: dim_participant.participant_id
+
+relationship 5b722152-2e14-5bf6-8784-e788f34b07a5
+	fromColumn: fact_trials.condition_key
+	toColumn: dim_condition.condition_key
+
+relationship bc4c2345-e4f3-5087-8f24-ab4c663e3065
+	fromColumn: quality_issues.source_id
+	toColumn: dim_source.source_id

@@ -1,0 +1,85 @@
+table dim_condition
+	lineageTag: ef0fbe51-8892-5871-bcaf-ae804c0c6514
+
+	column condition_key
+		dataType: string
+		isHidden
+		lineageTag: 280084fa-0693-5635-8f14-83e43d21f4e1
+		summarizeBy: none
+		sourceColumn: condition_key
+
+	column source_id
+		dataType: string
+		lineageTag: aa482f6e-70ef-5065-ac3f-917d5b535de1
+		summarizeBy: none
+		sourceColumn: source_id
+
+	column condition
+		dataType: string
+		lineageTag: e644af79-d9f5-5c0c-8367-6035dc8e483b
+		summarizeBy: none
+		sourceColumn: condition
+
+	column condition_label
+		dataType: string
+		lineageTag: f9cea4d2-ee6d-5e4a-8b04-c5da5012b49d
+		summarizeBy: none
+		sourceColumn: condition_label
+
+	column geometry
+		dataType: string
+		lineageTag: 3f1656ea-b86d-5a8d-8848-46d1df61c523
+		summarizeBy: none
+		sourceColumn: geometry
+
+	column coloured_walls
+		dataType: string
+		lineageTag: 21cca036-1333-506a-98ed-897bdf2c5483
+		summarizeBy: none
+		sourceColumn: coloured_walls
+
+	column transport_mode
+		dataType: string
+		lineageTag: 4bfbe2c8-4181-58ba-8686-ac58501ca578
+		summarizeBy: none
+		sourceColumn: transport_mode
+
+	column road_type
+		dataType: string
+		lineageTag: b84a873e-b439-5f51-911b-862231f80150
+		summarizeBy: none
+		sourceColumn: road_type
+
+	column crossing
+		dataType: string
+		lineageTag: 52296eec-5cc4-5ca5-b16d-e572a2a0f123
+		summarizeBy: none
+		sourceColumn: crossing
+
+	column pavement_good
+		dataType: double
+		lineageTag: 2489de34-8be8-5fe5-a873-d82824ed8a8f
+		summarizeBy: none
+		sourceColumn: pavement_good
+
+	column obstacles
+		dataType: double
+		lineageTag: df76626e-9554-5f17-8ba3-c781e1473bbf
+		summarizeBy: none
+		sourceColumn: obstacles
+
+	column vehicles_per_km_lane
+		dataType: double
+		lineageTag: acee91b9-3d6c-5c96-8d67-6e73d4f1b3cc
+		summarizeBy: none
+		sourceColumn: vehicles_per_km_lane
+
+	partition dim_condition = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_condition.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"condition_key", type text}, {"source_id", type text}, {"condition", type text}, {"condition_label", type text}, {"geometry", type text}, {"coloured_walls", type text}, {"transport_mode", type text}, {"road_type", type text}, {"crossing", type text}, {"pavement_good", type number}, {"obstacles", type number}, {"vehicles_per_km_lane", type number}}, "en-US")
+				in
+				    Typed

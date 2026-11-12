@@ -1,0 +1,73 @@
+table dim_source
+	lineageTag: 0d852d6f-d540-5db8-804a-f9caf63b5c5a
+
+	column source_id
+		dataType: string
+		lineageTag: 8e5d00e7-18c5-581f-87ab-501f55b3ea29
+		summarizeBy: none
+		sourceColumn: source_id
+
+	column source_name
+		dataType: string
+		lineageTag: 4ac6ca24-6f2f-54f7-8d66-5668da01fa27
+		summarizeBy: none
+		sourceColumn: source_name
+
+	column environment_type
+		dataType: string
+		lineageTag: 355bf20f-69db-52d4-b6a8-b4f97d78f710
+		summarizeBy: none
+		sourceColumn: environment_type
+
+	column presentation
+		dataType: string
+		lineageTag: a5b036bc-c78b-552f-8ac0-862232b2c30f
+		summarizeBy: none
+		sourceColumn: presentation
+
+	column task
+		dataType: string
+		lineageTag: f81b4555-93a9-55a5-81b3-0c8df466f4a5
+		summarizeBy: none
+		sourceColumn: task
+
+	column design
+		dataType: string
+		lineageTag: 37c032cc-826c-5ef8-8d3d-0df087b66850
+		summarizeBy: none
+		sourceColumn: design
+
+	column trial_definition
+		dataType: string
+		lineageTag: ef01692a-a925-58f2-94d2-aec872dab157
+		summarizeBy: none
+		sourceColumn: trial_definition
+
+	column licence
+		dataType: string
+		lineageTag: 7ceb608d-ae80-53ef-ba4b-e2893fc384b5
+		summarizeBy: none
+		sourceColumn: licence
+
+	column doi_url
+		dataType: string
+		dataCategory: WebUrl
+		lineageTag: 4c8d36e4-9966-50af-837a-9fe3ecbc7faa
+		summarizeBy: none
+		sourceColumn: doi_url
+
+	column year
+		dataType: int64
+		lineageTag: 721b67ac-4b7b-5a7e-868c-2004d6f4664b
+		summarizeBy: none
+		sourceColumn: year
+
+	partition dim_source = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_source.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"source_id", type text}, {"source_name", type text}, {"environment_type", type text}, {"presentation", type text}, {"task", type text}, {"design", type text}, {"trial_definition", type text}, {"licence", type text}, {"doi_url", type text}, {"year", Int64.Type}}, "en-US")
+				in
+				    Typed

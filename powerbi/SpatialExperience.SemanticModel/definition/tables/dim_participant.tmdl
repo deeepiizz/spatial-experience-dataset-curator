@@ -1,0 +1,57 @@
+table dim_participant
+	lineageTag: c879c9fe-7cff-5762-8214-c4e1fc7f71f3
+
+	column participant_id
+		dataType: string
+		isHidden
+		lineageTag: 85ba10e1-7f48-5733-a2a5-15f9945e20b9
+		summarizeBy: none
+		sourceColumn: participant_id
+
+	column source_id
+		dataType: string
+		lineageTag: e367b16d-8134-5d98-b717-df18d4adef57
+		summarizeBy: none
+		sourceColumn: source_id
+
+	column age_group
+		dataType: string
+		lineageTag: cfd15bfb-7207-5408-9cdd-4caf6173522e
+		summarizeBy: none
+		sourceColumn: age_group
+		sortByColumn: age_group_order
+
+	column gender
+		dataType: string
+		lineageTag: bd71c71a-39b8-5bef-9e8d-52d20563d513
+		summarizeBy: none
+		sourceColumn: gender
+
+	column academic_group
+		dataType: string
+		lineageTag: c2d90e46-0fcf-56f9-bada-722343a15f74
+		summarizeBy: none
+		sourceColumn: academic_group
+
+	column vr_experience
+		dataType: double
+		lineageTag: 0342474a-0817-5cd1-b581-823a57011e0e
+		summarizeBy: none
+		sourceColumn: vr_experience
+
+	column age_group_order
+		dataType: int64
+		isHidden
+		lineageTag: fdb6c986-4f7c-556f-bc7c-55bd7ed2a971
+		summarizeBy: none
+		sourceColumn: age_group_order
+
+	partition dim_participant = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "dim_participant.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"participant_id", type text}, {"source_id", type text}, {"age_group", type text}, {"gender", type text}, {"academic_group", type text}, {"vr_experience", type number}, {"age_group_order", Int64.Type}}, "en-US")
+				in
+				    Typed

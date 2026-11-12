@@ -1,0 +1,175 @@
+table fact_trials
+	lineageTag: 9e021594-9783-5d42-a038-7075983512b6
+
+	measure Trials = COUNTROWS ( fact_trials )
+		formatString: #,0
+		lineageTag: 339dc439-4e28-5f42-9ff1-ad8fdbbaaab3
+
+	measure Participants = DISTINCTCOUNT ( fact_trials[participant_id] )
+		formatString: #,0
+		lineageTag: 06d5c8b9-ba83-54a1-913a-c2e4ec87c11d
+
+	measure Sources = DISTINCTCOUNT ( fact_trials[source_id] )
+		formatString: #,0
+		lineageTag: 5b4f4509-377c-539f-b111-5e665e4303e4
+
+	measure 'Median time (s)' = MEDIAN ( fact_trials[time_s] )
+		formatString: #,0.0
+		lineageTag: bca487d1-e126-5d4b-bec4-89cc9e51ef07
+
+	measure 'Mean errors' = AVERAGE ( fact_trials[errors] )
+		formatString: #,0.00
+		lineageTag: 747f0f93-80a5-551a-992c-bb8d26325a80
+
+	measure 'Success rate' = ```
+			DIVIDE (
+			    CALCULATE ( COUNTROWS ( fact_trials ), fact_trials[success] = 1 ),
+			    CALCULATE ( COUNTROWS ( fact_trials ), NOT ISBLANK ( fact_trials[success] ) )
+			)
+			```
+		formatString: 0.0%
+		lineageTag: 55a911ac-36ab-5dee-a04f-9dc4f64ecfcd
+
+	measure 'Mean rating' = AVERAGE ( fact_trials[rating] )
+		formatString: #,0.00
+		lineageTag: 254db055-22fd-5310-b6aa-2f185adf55a6
+
+	measure 'Mean rating (0-1)' = AVERAGE ( fact_trials[rating_normalised] )
+		formatString: #,0.00
+		lineageTag: 1ddbb28c-f232-5e3b-9630-565de3467549
+
+	measure 'Median path (m)' = MEDIAN ( fact_trials[path_length_m] )
+		formatString: #,0.0
+		lineageTag: 74957c85-ba31-5faa-b1fa-1e76c2766533
+
+	measure 'Age known %' = ```
+			DIVIDE (
+			    CALCULATE ( [Participants], dim_participant[age_group] <> "unknown" ),
+			    [Participants]
+			)
+			```
+		formatString: 0%
+		lineageTag: 7883b22b-df48-51a3-a421-5d57e6167f6c
+
+	measure 'Gender known %' = ```
+			DIVIDE (
+			    CALCULATE ( [Participants], dim_participant[gender] <> "unknown" ),
+			    [Participants]
+			)
+			```
+		formatString: 0%
+		lineageTag: e01e33d0-8f15-5872-9037-856a63c9c4be
+
+	measure 'QR time saving %' = ```
+			VAR conv = CALCULATE ( [Median time (s)], dim_condition[condition] = "Conventional" )
+			VAR qr = CALCULATE ( [Median time (s)], dim_condition[condition] = "QR-assisted" )
+			RETURN DIVIDE ( conv - qr, conv )
+			```
+		formatString: 0.0%
+		lineageTag: 376f7f0f-a954-5218-b70b-07e9d7b81b35
+
+	measure 'Outbound / return time ratio' = ```
+			DIVIDE (
+			    CALCULATE ( [Median time (s)], fact_trials[phase] = "outbound" ),
+			    CALCULATE ( [Median time (s)], fact_trials[phase] = "return" )
+			)
+			```
+		formatString: #,0.00
+		lineageTag: 3af2dacb-77ce-566a-9fca-1d745bbe0d4c
+
+	measure 'Safety gap between modes' = ```
+			VAR byMode =
+			    ADDCOLUMNS ( VALUES ( dim_condition[transport_mode] ), "r", [Mean rating] )
+			RETURN MAXX ( byMode, [r] ) - MINX ( byMode, [r] )
+			```
+		formatString: #,0.00
+		lineageTag: 0e055f54-3d41-5ac1-aaaf-2acf6fb91868
+
+	measure 'Known issues' = COUNTROWS ( quality_issues )
+		formatString: #,0
+		lineageTag: 21e9af08-920e-584e-836e-6812205d8fea
+
+	column trial_id
+		dataType: string
+		isHidden
+		lineageTag: 4592e0aa-1d14-554e-9f91-0f9d3d13f5a7
+		summarizeBy: none
+		sourceColumn: trial_id
+
+	column source_id
+		dataType: string
+		lineageTag: 52cae190-cdb0-51ab-b288-75b50d937fe4
+		summarizeBy: none
+		sourceColumn: source_id
+
+	column participant_id
+		dataType: string
+		isHidden
+		lineageTag: 4bfb303a-f0f0-5e61-b321-687a36f8be3b
+		summarizeBy: none
+		sourceColumn: participant_id
+
+	column condition_key
+		dataType: string
+		isHidden
+		lineageTag: 589168b0-e966-5f18-bfde-0564af15cd0e
+		summarizeBy: none
+		sourceColumn: condition_key
+
+	column trial_index
+		dataType: int64
+		lineageTag: 9efe6ccd-cd96-5282-a019-9c9cc74565dd
+		summarizeBy: none
+		sourceColumn: trial_index
+
+	column phase
+		dataType: string
+		lineageTag: 973132e8-2208-505f-9177-07c569b971ff
+		summarizeBy: none
+		sourceColumn: phase
+
+	column time_s
+		dataType: double
+		lineageTag: e5d641b7-2ed5-5d8a-922f-2c0bc08db1f9
+		summarizeBy: none
+		sourceColumn: time_s
+
+	column errors
+		dataType: double
+		lineageTag: 1d32a716-7df2-5a8d-8239-56dec97d85b1
+		summarizeBy: none
+		sourceColumn: errors
+
+	column success
+		dataType: double
+		lineageTag: e42ac50d-9471-5b7c-993c-eec2364378f9
+		summarizeBy: none
+		sourceColumn: success
+
+	column rating
+		dataType: double
+		lineageTag: 4f23343a-c357-5e92-baba-394765ccb9f9
+		summarizeBy: none
+		sourceColumn: rating
+
+	column rating_normalised
+		dataType: double
+		lineageTag: 698c70e6-4f2f-58f8-ae7c-df84d704ef73
+		summarizeBy: none
+		sourceColumn: rating_normalised
+
+	column path_length_m
+		dataType: double
+		lineageTag: 81921773-659f-5e14-96ff-d156c3a8bc7e
+		summarizeBy: none
+		sourceColumn: path_length_m
+
+	partition fact_trials = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(DataFolder & "fact_trials.csv"), [Delimiter = ",", Encoding = 65001, QuoteStyle = QuoteStyle.Csv]),
+				    Promoted = Table.PromoteHeaders(Source, [PromoteAllScalars = true]),
+				    Typed = Table.TransformColumnTypes(Promoted, {{"trial_id", type text}, {"source_id", type text}, {"participant_id", type text}, {"condition_key", type text}, {"trial_index", Int64.Type}, {"phase", type text}, {"time_s", type number}, {"errors", type number}, {"success", type number}, {"rating", type number}, {"rating_normalised", type number}, {"path_length_m", type number}}, "en-US")
+				in
+				    Typed
