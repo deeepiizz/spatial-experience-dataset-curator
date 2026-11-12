@@ -1,0 +1,59 @@
+// Measures for the Spatial Experience dashboard.
+// In Power BI Desktop: Modeling > New measure, paste one block at a time.
+// Put them all in fact_trials (or a separate "_Measures" table).
+
+Trials = COUNTROWS ( fact_trials )
+
+Participants = DISTINCTCOUNT ( fact_trials[participant_id] )
+
+Sources = DISTINCTCOUNT ( fact_trials[source_id] )
+
+Median time (s) = MEDIAN ( fact_trials[time_s] )
+
+Mean errors = AVERAGE ( fact_trials[errors] )
+
+Success rate =
+DIVIDE (
+    CALCULATE ( COUNTROWS ( fact_trials ), fact_trials[success] = 1 ),
+    CALCULATE ( COUNTROWS ( fact_trials ), NOT ISBLANK ( fact_trials[success] ) )
+)
+
+Mean rating = AVERAGE ( fact_trials[rating] )
+
+Mean rating (0-1) = AVERAGE ( fact_trials[rating_normalised] )
+
+Median path (m) = MEDIAN ( fact_trials[path_length_m] )
+
+// Share of participants whose age group is recorded.
+Age known % =
+DIVIDE (
+    CALCULATE ( [Participants], dim_participant[age_group] <> "unknown" ),
+    [Participants]
+)
+
+Gender known % =
+DIVIDE (
+    CALCULATE ( [Participants], dim_participant[gender] <> "unknown" ),
+    [Participants]
+)
+
+// Library page: time saved by QR-assisted search, as a share of conventional time.
+QR time saving % =
+VAR conv = CALCULATE ( [Median time (s)], dim_condition[condition] = "Conventional" )
+VAR qr   = CALCULATE ( [Median time (s)], dim_condition[condition] = "QR-assisted" )
+RETURN DIVIDE ( conv - qr, conv )
+
+// Labyrinth page: how much slower the outbound search is than the return.
+Outbound / return time ratio =
+DIVIDE (
+    CALCULATE ( [Median time (s)], fact_trials[phase] = "outbound" ),
+    CALCULATE ( [Median time (s)], fact_trials[phase] = "return" )
+)
+
+// Athens page: gap between the safest and least safe transport mode in the current filter.
+Safety gap between modes =
+VAR byMode =
+    ADDCOLUMNS ( VALUES ( dim_condition[transport_mode] ), "r", [Mean rating] )
+RETURN MAXX ( byMode, [r] ) - MINX ( byMode, [r] )
+
+Known issues = COUNTROWS ( quality_issues )

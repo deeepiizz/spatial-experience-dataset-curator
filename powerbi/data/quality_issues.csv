@@ -1,0 +1,18 @@
+source_id,issue_no,issue
+liu_vr_wayfinding,1,"The record has no description, so the five group codes (EDG, CEDG, LMG, CLMG, VG) are undocumented. They are kept verbatim."
+liu_vr_wayfinding,2,UserStudy.csv is not valid UTF-8 (timestamps contain mis-encoded CJK characters); it is read as latin-1 and only numeric/ASCII columns are used.
+liu_vr_wayfinding,3,P16CLMG.csv ends with 394 rows whose sensor columns are empty; they are dropped.
+liu_vr_wayfinding,4,Trial 1 includes any idle time before the participant started moving.
+mayor_vr_labyrinth,1,"The description names four conditions, but the workbook has a fifth sheet (NoEucDoble) that is not described."
+mayor_vr_labyrinth,2,"The description mentions 10 Hz tracking logs, but the record only contains the summary workbook."
+mayor_vr_labyrinth,3,"Four participant-condition rows are empty (U07 Euc, U08 EucCol, U33 NoEucCol, U31 NoEucDoble) and are dropped."
+mayor_vr_labyrinth,4,Each sheet ends with one or two unlabeled mean rows; they are dropped.
+mayor_vr_labyrinth,5,"Condition order per participant is not recorded, so learning effects cannot be separated from condition effects."
+kumar_library_qr,1,"No age or gender is recorded; only academic group (UG, PG, PhD)."
+kumar_library_qr,2,"63 of 190 durations are whole minutes (about 3 would be expected by chance), so some start and end times were probably recorded to the minute."
+kumar_library_qr,3,"33 conventional tasks are marked Success_0_1 = 1 (correct book retrieved) but Accuracy_Score_0_3 = 0 (wrong rack, side and shelf). Both columns are kept as given; outcome_errors comes from the accuracy score."
+kumar_library_qr,4,"The data dictionary lists Route_Deviation_m, which is not in the data, and allows User_Group ""UG / PhD"", but 20 participants are ""PG""."
+tzouras_athens_safety,1,"The description reports 129 respondents and 5,772 ratings; the file contains 122 respondents and 5,771 ratings."
+tzouras_athens_safety,2,12 respondents have fewer than the expected 48 ratings (one has only 13).
+tzouras_athens_safety,3,"The README age coding (1 = under 18, 2 = 18-30, ...) contradicts the file's own `young` flag, which marks every code-1 respondent as under 30. The codes are mapped one step down (1 = 18-30), and a test checks that the mapping agrees with `young`."
+tzouras_athens_safety,4,"The README lists code 3 twice (31-40 and 41-50) and calls the e-scooter mode `escooter`, while the file uses `escoot`."

@@ -13,7 +13,7 @@ every row, and a pytest suite that checks every mapping against the raw files.
 | **Sources** | 4 Zenodo datasets, all CC-BY-4.0 |
 | **Environments** | real library (indoor), two VR environments, urban street images |
 | **Tasks** | navigation (time, errors, path length, success) and rating (1–7 perceived safety) |
-| **Tests** | 43, including a source-isolation test and checks that rebuild each source's own totals |
+| **Tests** | 45, including a source-isolation test and checks that rebuild each source's own totals |
 
 The combined table is in [`data/processed/trials.csv`](data/processed/trials.csv), with a
 per-source overview in [`source_summary.csv`](data/processed/source_summary.csv).
@@ -178,6 +178,13 @@ Code: MIT. The combined dataset is adapted from CC-BY-4.0 sources and shared und
 with each row citing its source. See [`data/processed/LICENSE.md`](data/processed/LICENSE.md).
 The original authors have not endorsed this compilation.
 
+## Power BI dashboard
+
+[`powerbi/`](powerbi/) has the combined data as a star schema (one fact table, three dimensions
+and a data-quality table), every DAX measure, and a page-by-page build guide for a four-page
+report: overview, navigation, perceived street safety and data quality. The guide ends with the
+numbers each visual should show, so the finished report can be checked against the pipeline.
+
 ## Project layout
 
 ```
@@ -186,5 +193,7 @@ src/curator/schema.py        common schema + validator
 src/curator/sources.py       verified Zenodo download
 src/curator/adapters/        one adapter per source
 src/curator/pipeline.py      build -> validate -> write data/processed/
+src/curator/powerbi_export.py  star schema for Power BI -> powerbi/data/
+powerbi/                     DAX measures and dashboard build guide
 tests/                       schema, per-source faithfulness, isolation
 ```

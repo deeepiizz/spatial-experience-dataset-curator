@@ -1,0 +1,114 @@
+# Power BI dashboard: Spatial Experience
+
+A four-page Power BI report on the combined dataset: an overview, navigation performance,
+perceived street safety, and data quality. Everything needed is in this folder: the star-schema
+tables, every DAX measure and the page layouts. Building it in Power BI Desktop takes about 1–2 hours.
+
+```
+powerbi/
+  data/fact_trials.csv       6,513 rows, one per trial
+  data/dim_source.csv            4 rows
+  data/dim_participant.csv     303 rows
+  data/dim_condition.csv       156 rows, with spatial features (road type, geometry, ...)
+  data/quality_issues.csv       17 rows, from sources.yaml
+  measures.dax                 all measures used below
+```
+
+The tables are rebuilt from `data/processed/trials.csv` with `python -m curator.powerbi_export`.
+`tests/test_powerbi_export.py` checks that every dimension key is unique and that every fact row
+finds its match.
+
+## 1. Load the data
+
+1. **Get data → Text/CSV**, load all five files from `powerbi/data/`.
+2. In **Power Query**, check the types. The `time_s`, `errors`, `rating`, `rating_normalised`
+   and `path_length_m` columns should be Decimal number. `trial_index`, `success` and `age_group_order` should be Whole number.
+   Everything else is Text. Click **Close & Apply**.
+
+## 2. Model (Model view)
+
+Create these relationships. All are many-to-one, single direction, from the fact side to the dimension side:
+
+| From | To |
+|---|---|
+| `fact_trials[source_id]` | `dim_source[source_id]` |
+| `fact_trials[participant_id]` | `dim_participant[participant_id]` |
+| `fact_trials[condition_key]` | `dim_condition[condition_key]` |
+| `quality_issues[source_id]` | `dim_source[source_id]` |
+
+Delete any relationship Power BI created automatically between `dim_participant[source_id]` or
+`dim_condition[source_id]` and `dim_source`. They would create a second filter path.
+
+Then:
+- `dim_participant[age_group]` → **Sort by column** → `age_group_order`.
+- Hide the key columns in report view (`condition_key`, `participant_id`, `trial_id`).
+- `dim_source[doi_url]` → Data category **Web URL**.
+
+## 3. Measures
+
+Paste each block from [`measures.dax`](measures.dax) as a new measure. Set the format as you go:
+**Success rate**, **Age known %**, **Gender known %** and **QR time saving %** as Percentage,
+the rest as Decimal with 1–2 decimals.
+
+## 4. Pages
+
+### Page 1 – Overview
+- **4 cards:** Trials, Participants, Sources, Known issues.
+- **Clustered bar:** Trials by `dim_source[source_name]`, legend `environment_type`.
+- **Table:** `source_name`, `environment_type`, `presentation`, `task`, `licence`, `doi_url`,
+  Participants, Trials, Age known %, Gender known %.
+- **Slicer:** `dim_source[environment_type]` (tiles).
+- **Text box:** "Each environment type comes from one or two studies, so compare effects within
+  a source, not raw values across sources."
+
+### Page 2 – Navigation
+Page filter: `dim_source[task]` = navigation.
+- **Cards:** Median time (s), Mean errors, Success rate.
+- **Clustered column:** Median time (s) by `dim_condition[condition_label]`, small multiples by
+  `dim_source[source_name]`. Turn off **Shared y-axis**, because the scales differ by an order of magnitude.
+- **Clustered column (labyrinth):** Median time (s) by `condition_label`, legend
+  `fact_trials[phase]`, with a visual filter for VR labyrinth (Mayor). Add the card **Outbound / return time ratio**.
+- **Card + bar (library):** QR time saving %, plus Success rate and Mean errors by `condition`,
+  with a visual filter for Library book search (Kumar).
+- **Slicers:** `dim_participant[age_group]`, `dim_participant[gender]`.
+
+### Page 3 – Perceived street safety
+Page filter: `dim_source[source_name]` = Athens street safety (Tzouras).
+- **Matrix:** rows `dim_condition[road_type]`, columns `dim_condition[transport_mode]`,
+  values Mean rating. **Conditional formatting → Background color**, gradient from red
+  (1) to green (7).
+- **Clustered bar:** Mean rating by `transport_mode`.
+- **Card:** Safety gap between modes.
+- **Slicers:** `crossing`, `pavement_good`, `obstacles`, `age_group`, `gender`.
+
+### Page 4 – Data quality
+- **Table:** `quality_issues[source_id]`, `issue`. Turn on word wrap.
+- **Clustered bar:** Known issues by `dim_source[source_name]`.
+- **100% stacked bar:** Participants by `source_name`, legend `dim_participant[age_group]`.
+  It shows that the library has no demographics and that 18–30 year olds dominate the rest.
+
+## 5. Check your numbers
+
+With no filters applied, the report should show:
+
+| Measure | Value |
+|---|---|
+| Trials | 6,513 |
+| Participants | 303 |
+| Sources | 4 |
+| Known issues | 17 |
+| Median time (s), all navigation | 53.5 |
+| Median time (s): library / Liu VR / labyrinth | 230 / 35.9 / 48.4 |
+| Success rate, all navigation | 97.4% |
+| QR time saving % (library) | 55.3% (median 360 s → 161 s) |
+| Outbound / return time ratio (labyrinth) | 2.23 |
+| Mean rating by mode: walk / car / e-bike / e-scooter | 5.30 / 5.16 / 3.68 / 3.38 |
+| Safety gap between modes | 1.92 |
+
+If a number differs, the cause is usually a relationship pointing the wrong way or a column still typed as text.
+
+## 6. Publish
+
+Save as `powerbi/spatial-experience.pbix` and commit it. Export each page as a PNG
+(**File → Export → PDF**, or a screenshot) into `powerbi/screenshots/` and link the images
+from the main README, so people can see the report without opening Power BI.

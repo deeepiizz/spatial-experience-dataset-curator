@@ -1,0 +1,157 @@
+condition_key,source_id,condition,condition_label,geometry,coloured_walls,transport_mode,road_type,crossing,pavement_good,obstacles,vehicles_per_km_lane
+kumar_library_qr|Conventional,kumar_library_qr,Conventional,Conventional,,,,,,,,
+kumar_library_qr|QR-assisted,kumar_library_qr,QR-assisted,QR-assisted,,,,,,,,
+liu_vr_wayfinding|EDG,liu_vr_wayfinding,EDG,EDG,,,,,,,,
+liu_vr_wayfinding|LMG,liu_vr_wayfinding,LMG,LMG,,,,,,,,
+liu_vr_wayfinding|CLMG,liu_vr_wayfinding,CLMG,CLMG,,,,,,,,
+liu_vr_wayfinding|VG,liu_vr_wayfinding,VG,VG,,,,,,,,
+liu_vr_wayfinding|CEDG,liu_vr_wayfinding,CEDG,CEDG,,,,,,,,
+mayor_vr_labyrinth|Euc,mayor_vr_labyrinth,Euc,Euclidean,euclidean,False,,,,,,
+mayor_vr_labyrinth|EucCol,mayor_vr_labyrinth,EucCol,"Euclidean, coloured walls",euclidean,True,,,,,,
+mayor_vr_labyrinth|NoEuc,mayor_vr_labyrinth,NoEuc,Non-Euclidean,partially_non_euclidean,False,,,,,,
+mayor_vr_labyrinth|NoEucCol,mayor_vr_labyrinth,NoEucCol,"Non-Euclidean, coloured walls",partially_non_euclidean,True,,,,,,
+mayor_vr_labyrinth|NoEucDoble,mayor_vr_labyrinth,NoEucDoble,Non-Euclidean double (undocumented),partially_non_euclidean_double (undocumented),,,,,,,
+tzouras_athens_safety|scenario06|car,tzouras_athens_safety,scenario06|car,scenario06 – car,,,car,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m",none,1.0,0.0,20.0
+tzouras_athens_safety|scenario06|e-bike,tzouras_athens_safety,scenario06|e-bike,scenario06 – e-bike,,,e-bike,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m",none,1.0,0.0,20.0
+tzouras_athens_safety|scenario06|e-scooter,tzouras_athens_safety,scenario06|e-scooter,scenario06 – e-scooter,,,e-scooter,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m",none,1.0,0.0,20.0
+tzouras_athens_safety|scenario06|walk,tzouras_athens_safety,scenario06|walk,scenario06 – walk,,,walk,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m",none,1.0,0.0,20.0
+tzouras_athens_safety|scenario07|car,tzouras_athens_safety,scenario07|car,scenario07 – car,,,car,"shared space, 30 km/h","zebra, traffic lights",1.0,0.0,100.0
+tzouras_athens_safety|scenario07|e-bike,tzouras_athens_safety,scenario07|e-bike,scenario07 – e-bike,,,e-bike,"shared space, 30 km/h","zebra, traffic lights",1.0,0.0,100.0
+tzouras_athens_safety|scenario07|e-scooter,tzouras_athens_safety,scenario07|e-scooter,scenario07 – e-scooter,,,e-scooter,"shared space, 30 km/h","zebra, traffic lights",1.0,0.0,100.0
+tzouras_athens_safety|scenario07|walk,tzouras_athens_safety,scenario07|walk,scenario07 – walk,,,walk,"shared space, 30 km/h","zebra, traffic lights",1.0,0.0,100.0
+tzouras_athens_safety|scenario10|car,tzouras_athens_safety,scenario10|car,scenario10 – car,,,car,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m",none,0.0,1.0,60.0
+tzouras_athens_safety|scenario10|e-bike,tzouras_athens_safety,scenario10|e-bike,scenario10 – e-bike,,,e-bike,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m",none,0.0,1.0,60.0
+tzouras_athens_safety|scenario10|e-scooter,tzouras_athens_safety,scenario10|e-scooter,scenario10 – e-scooter,,,e-scooter,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m",none,0.0,1.0,60.0
+tzouras_athens_safety|scenario10|walk,tzouras_athens_safety,scenario10|walk,scenario10 – walk,,,walk,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m",none,0.0,1.0,60.0
+tzouras_athens_safety|scenario11|car,tzouras_athens_safety,scenario11|car,scenario11 – car,,,car,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m","zebra, uncontrolled",1.0,1.0,100.0
+tzouras_athens_safety|scenario11|e-bike,tzouras_athens_safety,scenario11|e-bike,scenario11 – e-bike,,,e-bike,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m","zebra, uncontrolled",1.0,1.0,100.0
+tzouras_athens_safety|scenario11|e-scooter,tzouras_athens_safety,scenario11|e-scooter,scenario11 – e-scooter,,,e-scooter,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m","zebra, uncontrolled",1.0,1.0,100.0
+tzouras_athens_safety|scenario11|walk,tzouras_athens_safety,scenario11|walk,scenario11 – walk,,,walk,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m","zebra, uncontrolled",1.0,1.0,100.0
+tzouras_athens_safety|scenario13|car,tzouras_athens_safety,scenario13|car,scenario13 – car,,,car,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m",none,0.0,0.0,100.0
+tzouras_athens_safety|scenario13|e-bike,tzouras_athens_safety,scenario13|e-bike,scenario13 – e-bike,,,e-bike,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m",none,0.0,0.0,100.0
+tzouras_athens_safety|scenario13|e-scooter,tzouras_athens_safety,scenario13|e-scooter,scenario13 – e-scooter,,,e-scooter,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m",none,0.0,0.0,100.0
+tzouras_athens_safety|scenario13|walk,tzouras_athens_safety,scenario13|walk,scenario13 – walk,,,walk,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m",none,0.0,0.0,100.0
+tzouras_athens_safety|scenario16|car,tzouras_athens_safety,scenario16|car,scenario16 – car,,,car,"shared space, 30 km/h","zebra, traffic lights",0.0,0.0,20.0
+tzouras_athens_safety|scenario16|e-bike,tzouras_athens_safety,scenario16|e-bike,scenario16 – e-bike,,,e-bike,"shared space, 30 km/h","zebra, traffic lights",0.0,0.0,20.0
+tzouras_athens_safety|scenario16|e-scooter,tzouras_athens_safety,scenario16|e-scooter,scenario16 – e-scooter,,,e-scooter,"shared space, 30 km/h","zebra, traffic lights",0.0,0.0,20.0
+tzouras_athens_safety|scenario16|walk,tzouras_athens_safety,scenario16|walk,scenario16 – walk,,,walk,"shared space, 30 km/h","zebra, traffic lights",0.0,0.0,20.0
+tzouras_athens_safety|scenario21|car,tzouras_athens_safety,scenario21|car,scenario21 – car,,,car,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m","zebra, traffic lights",0.0,1.0,60.0
+tzouras_athens_safety|scenario21|e-bike,tzouras_athens_safety,scenario21|e-bike,scenario21 – e-bike,,,e-bike,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m","zebra, traffic lights",0.0,1.0,60.0
+tzouras_athens_safety|scenario21|e-scooter,tzouras_athens_safety,scenario21|e-scooter,scenario21 – e-scooter,,,e-scooter,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m","zebra, traffic lights",0.0,1.0,60.0
+tzouras_athens_safety|scenario21|walk,tzouras_athens_safety,scenario21|walk,scenario21 – walk,,,walk,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m","zebra, traffic lights",0.0,1.0,60.0
+tzouras_athens_safety|scenario24|car,tzouras_athens_safety,scenario24|car,scenario24 – car,,,car,"one-way urban road, 50 km/h, with cycle lane","zebra, uncontrolled",1.0,1.0,20.0
+tzouras_athens_safety|scenario24|e-bike,tzouras_athens_safety,scenario24|e-bike,scenario24 – e-bike,,,e-bike,"one-way urban road, 50 km/h, with cycle lane","zebra, uncontrolled",1.0,1.0,20.0
+tzouras_athens_safety|scenario24|e-scooter,tzouras_athens_safety,scenario24|e-scooter,scenario24 – e-scooter,,,e-scooter,"one-way urban road, 50 km/h, with cycle lane","zebra, uncontrolled",1.0,1.0,20.0
+tzouras_athens_safety|scenario24|walk,tzouras_athens_safety,scenario24|walk,scenario24 – walk,,,walk,"one-way urban road, 50 km/h, with cycle lane","zebra, uncontrolled",1.0,1.0,20.0
+tzouras_athens_safety|scenario26|car,tzouras_athens_safety,scenario26|car,scenario26 – car,,,car,"one-way urban road, 50 km/h, with cycle lane",none,0.0,1.0,100.0
+tzouras_athens_safety|scenario26|e-bike,tzouras_athens_safety,scenario26|e-bike,scenario26 – e-bike,,,e-bike,"one-way urban road, 50 km/h, with cycle lane",none,0.0,1.0,100.0
+tzouras_athens_safety|scenario26|e-scooter,tzouras_athens_safety,scenario26|e-scooter,scenario26 – e-scooter,,,e-scooter,"one-way urban road, 50 km/h, with cycle lane",none,0.0,1.0,100.0
+tzouras_athens_safety|scenario26|walk,tzouras_athens_safety,scenario26|walk,scenario26 – walk,,,walk,"one-way urban road, 50 km/h, with cycle lane",none,0.0,1.0,100.0
+tzouras_athens_safety|scenario27|car,tzouras_athens_safety,scenario27|car,scenario27 – car,,,car,"one-way urban road, 50 km/h, with cycle lane","zebra, uncontrolled",0.0,0.0,60.0
+tzouras_athens_safety|scenario27|e-bike,tzouras_athens_safety,scenario27|e-bike,scenario27 – e-bike,,,e-bike,"one-way urban road, 50 km/h, with cycle lane","zebra, uncontrolled",0.0,0.0,60.0
+tzouras_athens_safety|scenario27|e-scooter,tzouras_athens_safety,scenario27|e-scooter,scenario27 – e-scooter,,,e-scooter,"one-way urban road, 50 km/h, with cycle lane","zebra, uncontrolled",0.0,0.0,60.0
+tzouras_athens_safety|scenario27|walk,tzouras_athens_safety,scenario27|walk,scenario27 – walk,,,walk,"one-way urban road, 50 km/h, with cycle lane","zebra, uncontrolled",0.0,0.0,60.0
+tzouras_athens_safety|scenario29|car,tzouras_athens_safety,scenario29|car,scenario29 – car,,,car,"shared space, 30 km/h","zebra, uncontrolled",1.0,1.0,20.0
+tzouras_athens_safety|scenario29|e-bike,tzouras_athens_safety,scenario29|e-bike,scenario29 – e-bike,,,e-bike,"shared space, 30 km/h","zebra, uncontrolled",1.0,1.0,20.0
+tzouras_athens_safety|scenario29|e-scooter,tzouras_athens_safety,scenario29|e-scooter,scenario29 – e-scooter,,,e-scooter,"shared space, 30 km/h","zebra, uncontrolled",1.0,1.0,20.0
+tzouras_athens_safety|scenario29|walk,tzouras_athens_safety,scenario29|walk,scenario29 – walk,,,walk,"shared space, 30 km/h","zebra, uncontrolled",1.0,1.0,20.0
+tzouras_athens_safety|scenario32|car,tzouras_athens_safety,scenario32|car,scenario32 – car,,,car,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m","zebra, traffic lights",1.0,0.0,60.0
+tzouras_athens_safety|scenario32|e-bike,tzouras_athens_safety,scenario32|e-bike,scenario32 – e-bike,,,e-bike,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m","zebra, traffic lights",1.0,0.0,60.0
+tzouras_athens_safety|scenario32|e-scooter,tzouras_athens_safety,scenario32|e-scooter,scenario32 – e-scooter,,,e-scooter,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m","zebra, traffic lights",1.0,0.0,60.0
+tzouras_athens_safety|scenario32|walk,tzouras_athens_safety,scenario32|walk,scenario32 – walk,,,walk,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m","zebra, traffic lights",1.0,0.0,60.0
+tzouras_athens_safety|scenario02|car,tzouras_athens_safety,scenario02|car,scenario02 – car,,,car,"one-way urban road, 50 km/h, with cycle lane","zebra, uncontrolled",0.0,1.0,60.0
+tzouras_athens_safety|scenario02|e-bike,tzouras_athens_safety,scenario02|e-bike,scenario02 – e-bike,,,e-bike,"one-way urban road, 50 km/h, with cycle lane","zebra, uncontrolled",0.0,1.0,60.0
+tzouras_athens_safety|scenario02|e-scooter,tzouras_athens_safety,scenario02|e-scooter,scenario02 – e-scooter,,,e-scooter,"one-way urban road, 50 km/h, with cycle lane","zebra, uncontrolled",0.0,1.0,60.0
+tzouras_athens_safety|scenario02|walk,tzouras_athens_safety,scenario02|walk,scenario02 – walk,,,walk,"one-way urban road, 50 km/h, with cycle lane","zebra, uncontrolled",0.0,1.0,60.0
+tzouras_athens_safety|scenario03|car,tzouras_athens_safety,scenario03|car,scenario03 – car,,,car,"one-way urban road, 50 km/h, with cycle lane","zebra, traffic lights",0.0,0.0,20.0
+tzouras_athens_safety|scenario03|e-bike,tzouras_athens_safety,scenario03|e-bike,scenario03 – e-bike,,,e-bike,"one-way urban road, 50 km/h, with cycle lane","zebra, traffic lights",0.0,0.0,20.0
+tzouras_athens_safety|scenario03|e-scooter,tzouras_athens_safety,scenario03|e-scooter,scenario03 – e-scooter,,,e-scooter,"one-way urban road, 50 km/h, with cycle lane","zebra, traffic lights",0.0,0.0,20.0
+tzouras_athens_safety|scenario03|walk,tzouras_athens_safety,scenario03|walk,scenario03 – walk,,,walk,"one-way urban road, 50 km/h, with cycle lane","zebra, traffic lights",0.0,0.0,20.0
+tzouras_athens_safety|scenario05|car,tzouras_athens_safety,scenario05|car,scenario05 – car,,,car,"shared space, 30 km/h","zebra, traffic lights",1.0,1.0,100.0
+tzouras_athens_safety|scenario05|e-bike,tzouras_athens_safety,scenario05|e-bike,scenario05 – e-bike,,,e-bike,"shared space, 30 km/h","zebra, traffic lights",1.0,1.0,100.0
+tzouras_athens_safety|scenario05|e-scooter,tzouras_athens_safety,scenario05|e-scooter,scenario05 – e-scooter,,,e-scooter,"shared space, 30 km/h","zebra, traffic lights",1.0,1.0,100.0
+tzouras_athens_safety|scenario05|walk,tzouras_athens_safety,scenario05|walk,scenario05 – walk,,,walk,"shared space, 30 km/h","zebra, traffic lights",1.0,1.0,100.0
+tzouras_athens_safety|scenario08|car,tzouras_athens_safety,scenario08|car,scenario08 – car,,,car,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m",none,1.0,0.0,20.0
+tzouras_athens_safety|scenario08|e-bike,tzouras_athens_safety,scenario08|e-bike,scenario08 – e-bike,,,e-bike,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m",none,1.0,0.0,20.0
+tzouras_athens_safety|scenario08|e-scooter,tzouras_athens_safety,scenario08|e-scooter,scenario08 – e-scooter,,,e-scooter,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m",none,1.0,0.0,20.0
+tzouras_athens_safety|scenario08|walk,tzouras_athens_safety,scenario08|walk,scenario08 – walk,,,walk,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m",none,1.0,0.0,20.0
+tzouras_athens_safety|scenario18|car,tzouras_athens_safety,scenario18|car,scenario18 – car,,,car,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m","zebra, uncontrolled",1.0,0.0,100.0
+tzouras_athens_safety|scenario18|e-bike,tzouras_athens_safety,scenario18|e-bike,scenario18 – e-bike,,,e-bike,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m","zebra, uncontrolled",1.0,0.0,100.0
+tzouras_athens_safety|scenario18|e-scooter,tzouras_athens_safety,scenario18|e-scooter,scenario18 – e-scooter,,,e-scooter,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m","zebra, uncontrolled",1.0,0.0,100.0
+tzouras_athens_safety|scenario18|walk,tzouras_athens_safety,scenario18|walk,scenario18 – walk,,,walk,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m","zebra, uncontrolled",1.0,0.0,100.0
+tzouras_athens_safety|scenario19|car,tzouras_athens_safety,scenario19|car,scenario19 – car,,,car,"shared space, 30 km/h",none,1.0,0.0,60.0
+tzouras_athens_safety|scenario19|e-bike,tzouras_athens_safety,scenario19|e-bike,scenario19 – e-bike,,,e-bike,"shared space, 30 km/h",none,1.0,0.0,60.0
+tzouras_athens_safety|scenario19|e-scooter,tzouras_athens_safety,scenario19|e-scooter,scenario19 – e-scooter,,,e-scooter,"shared space, 30 km/h",none,1.0,0.0,60.0
+tzouras_athens_safety|scenario19|walk,tzouras_athens_safety,scenario19|walk,scenario19 – walk,,,walk,"shared space, 30 km/h",none,1.0,0.0,60.0
+tzouras_athens_safety|scenario22|car,tzouras_athens_safety,scenario22|car,scenario22 – car,,,car,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m","zebra, uncontrolled",0.0,1.0,20.0
+tzouras_athens_safety|scenario22|e-bike,tzouras_athens_safety,scenario22|e-bike,scenario22 – e-bike,,,e-bike,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m","zebra, uncontrolled",0.0,1.0,20.0
+tzouras_athens_safety|scenario22|e-scooter,tzouras_athens_safety,scenario22|e-scooter,scenario22 – e-scooter,,,e-scooter,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m","zebra, uncontrolled",0.0,1.0,20.0
+tzouras_athens_safety|scenario22|walk,tzouras_athens_safety,scenario22|walk,scenario22 – walk,,,walk,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m","zebra, uncontrolled",0.0,1.0,20.0
+tzouras_athens_safety|scenario23|car,tzouras_athens_safety,scenario23|car,scenario23 – car,,,car,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m","zebra, traffic lights",1.0,1.0,60.0
+tzouras_athens_safety|scenario23|e-bike,tzouras_athens_safety,scenario23|e-bike,scenario23 – e-bike,,,e-bike,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m","zebra, traffic lights",1.0,1.0,60.0
+tzouras_athens_safety|scenario23|e-scooter,tzouras_athens_safety,scenario23|e-scooter,scenario23 – e-scooter,,,e-scooter,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m","zebra, traffic lights",1.0,1.0,60.0
+tzouras_athens_safety|scenario23|walk,tzouras_athens_safety,scenario23|walk,scenario23 – walk,,,walk,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m","zebra, traffic lights",1.0,1.0,60.0
+tzouras_athens_safety|scenario25|car,tzouras_athens_safety,scenario25|car,scenario25 – car,,,car,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m","zebra, uncontrolled",0.0,0.0,60.0
+tzouras_athens_safety|scenario25|e-bike,tzouras_athens_safety,scenario25|e-bike,scenario25 – e-bike,,,e-bike,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m","zebra, uncontrolled",0.0,0.0,60.0
+tzouras_athens_safety|scenario25|e-scooter,tzouras_athens_safety,scenario25|e-scooter,scenario25 – e-scooter,,,e-scooter,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m","zebra, uncontrolled",0.0,0.0,60.0
+tzouras_athens_safety|scenario25|walk,tzouras_athens_safety,scenario25|walk,scenario25 – walk,,,walk,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m","zebra, uncontrolled",0.0,0.0,60.0
+tzouras_athens_safety|scenario28|car,tzouras_athens_safety,scenario28|car,scenario28 – car,,,car,"shared space, 30 km/h",none,0.0,0.0,100.0
+tzouras_athens_safety|scenario28|e-bike,tzouras_athens_safety,scenario28|e-bike,scenario28 – e-bike,,,e-bike,"shared space, 30 km/h",none,0.0,0.0,100.0
+tzouras_athens_safety|scenario28|e-scooter,tzouras_athens_safety,scenario28|e-scooter,scenario28 – e-scooter,,,e-scooter,"shared space, 30 km/h",none,0.0,0.0,100.0
+tzouras_athens_safety|scenario28|walk,tzouras_athens_safety,scenario28|walk,scenario28 – walk,,,walk,"shared space, 30 km/h",none,0.0,0.0,100.0
+tzouras_athens_safety|scenario33|car,tzouras_athens_safety,scenario33|car,scenario33 – car,,,car,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m",none,0.0,1.0,20.0
+tzouras_athens_safety|scenario33|e-bike,tzouras_athens_safety,scenario33|e-bike,scenario33 – e-bike,,,e-bike,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m",none,0.0,1.0,20.0
+tzouras_athens_safety|scenario33|e-scooter,tzouras_athens_safety,scenario33|e-scooter,scenario33 – e-scooter,,,e-scooter,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m",none,0.0,1.0,20.0
+tzouras_athens_safety|scenario33|walk,tzouras_athens_safety,scenario33|walk,scenario33 – walk,,,walk,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m",none,0.0,1.0,20.0
+tzouras_athens_safety|scenario36|car,tzouras_athens_safety,scenario36|car,scenario36 – car,,,car,"one-way urban road, 50 km/h, with cycle lane","zebra, traffic lights",1.0,1.0,100.0
+tzouras_athens_safety|scenario36|e-bike,tzouras_athens_safety,scenario36|e-bike,scenario36 – e-bike,,,e-bike,"one-way urban road, 50 km/h, with cycle lane","zebra, traffic lights",1.0,1.0,100.0
+tzouras_athens_safety|scenario36|e-scooter,tzouras_athens_safety,scenario36|e-scooter,scenario36 – e-scooter,,,e-scooter,"one-way urban road, 50 km/h, with cycle lane","zebra, traffic lights",1.0,1.0,100.0
+tzouras_athens_safety|scenario36|walk,tzouras_athens_safety,scenario36|walk,scenario36 – walk,,,walk,"one-way urban road, 50 km/h, with cycle lane","zebra, traffic lights",1.0,1.0,100.0
+tzouras_athens_safety|scenario01|car,tzouras_athens_safety,scenario01|car,scenario01 – car,,,car,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m","zebra, traffic lights",0.0,0.0,20.0
+tzouras_athens_safety|scenario01|e-bike,tzouras_athens_safety,scenario01|e-bike,scenario01 – e-bike,,,e-bike,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m","zebra, traffic lights",0.0,0.0,20.0
+tzouras_athens_safety|scenario01|e-scooter,tzouras_athens_safety,scenario01|e-scooter,scenario01 – e-scooter,,,e-scooter,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m","zebra, traffic lights",0.0,0.0,20.0
+tzouras_athens_safety|scenario01|walk,tzouras_athens_safety,scenario01|walk,scenario01 – walk,,,walk,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m","zebra, traffic lights",0.0,0.0,20.0
+tzouras_athens_safety|scenario04|car,tzouras_athens_safety,scenario04|car,scenario04 – car,,,car,"shared space, 30 km/h","zebra, uncontrolled",0.0,0.0,60.0
+tzouras_athens_safety|scenario04|e-bike,tzouras_athens_safety,scenario04|e-bike,scenario04 – e-bike,,,e-bike,"shared space, 30 km/h","zebra, uncontrolled",0.0,0.0,60.0
+tzouras_athens_safety|scenario04|e-scooter,tzouras_athens_safety,scenario04|e-scooter,scenario04 – e-scooter,,,e-scooter,"shared space, 30 km/h","zebra, uncontrolled",0.0,0.0,60.0
+tzouras_athens_safety|scenario04|walk,tzouras_athens_safety,scenario04|walk,scenario04 – walk,,,walk,"shared space, 30 km/h","zebra, uncontrolled",0.0,0.0,60.0
+tzouras_athens_safety|scenario09|car,tzouras_athens_safety,scenario09|car,scenario09 – car,,,car,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m","zebra, uncontrolled",0.0,1.0,100.0
+tzouras_athens_safety|scenario09|e-bike,tzouras_athens_safety,scenario09|e-bike,scenario09 – e-bike,,,e-bike,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m","zebra, uncontrolled",0.0,1.0,100.0
+tzouras_athens_safety|scenario09|e-scooter,tzouras_athens_safety,scenario09|e-scooter,scenario09 – e-scooter,,,e-scooter,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m","zebra, uncontrolled",0.0,1.0,100.0
+tzouras_athens_safety|scenario09|walk,tzouras_athens_safety,scenario09|walk,scenario09 – walk,,,walk,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m","zebra, uncontrolled",0.0,1.0,100.0
+tzouras_athens_safety|scenario12|car,tzouras_athens_safety,scenario12|car,scenario12 – car,,,car,"one-way urban road, 50 km/h, with cycle lane",none,1.0,1.0,60.0
+tzouras_athens_safety|scenario12|e-bike,tzouras_athens_safety,scenario12|e-bike,scenario12 – e-bike,,,e-bike,"one-way urban road, 50 km/h, with cycle lane",none,1.0,1.0,60.0
+tzouras_athens_safety|scenario12|e-scooter,tzouras_athens_safety,scenario12|e-scooter,scenario12 – e-scooter,,,e-scooter,"one-way urban road, 50 km/h, with cycle lane",none,1.0,1.0,60.0
+tzouras_athens_safety|scenario12|walk,tzouras_athens_safety,scenario12|walk,scenario12 – walk,,,walk,"one-way urban road, 50 km/h, with cycle lane",none,1.0,1.0,60.0
+tzouras_athens_safety|scenario14|car,tzouras_athens_safety,scenario14|car,scenario14 – car,,,car,"one-way urban road, 50 km/h, with cycle lane","zebra, traffic lights",0.0,1.0,20.0
+tzouras_athens_safety|scenario14|e-bike,tzouras_athens_safety,scenario14|e-bike,scenario14 – e-bike,,,e-bike,"one-way urban road, 50 km/h, with cycle lane","zebra, traffic lights",0.0,1.0,20.0
+tzouras_athens_safety|scenario14|e-scooter,tzouras_athens_safety,scenario14|e-scooter,scenario14 – e-scooter,,,e-scooter,"one-way urban road, 50 km/h, with cycle lane","zebra, traffic lights",0.0,1.0,20.0
+tzouras_athens_safety|scenario14|walk,tzouras_athens_safety,scenario14|walk,scenario14 – walk,,,walk,"one-way urban road, 50 km/h, with cycle lane","zebra, traffic lights",0.0,1.0,20.0
+tzouras_athens_safety|scenario15|car,tzouras_athens_safety,scenario15|car,scenario15 – car,,,car,"one-way urban road, 50 km/h, with cycle lane",none,0.0,0.0,100.0
+tzouras_athens_safety|scenario15|e-bike,tzouras_athens_safety,scenario15|e-bike,scenario15 – e-bike,,,e-bike,"one-way urban road, 50 km/h, with cycle lane",none,0.0,0.0,100.0
+tzouras_athens_safety|scenario15|e-scooter,tzouras_athens_safety,scenario15|e-scooter,scenario15 – e-scooter,,,e-scooter,"one-way urban road, 50 km/h, with cycle lane",none,0.0,0.0,100.0
+tzouras_athens_safety|scenario15|walk,tzouras_athens_safety,scenario15|walk,scenario15 – walk,,,walk,"one-way urban road, 50 km/h, with cycle lane",none,0.0,0.0,100.0
+tzouras_athens_safety|scenario17|car,tzouras_athens_safety,scenario17|car,scenario17 – car,,,car,"shared space, 30 km/h",none,1.0,1.0,60.0
+tzouras_athens_safety|scenario17|e-bike,tzouras_athens_safety,scenario17|e-bike,scenario17 – e-bike,,,e-bike,"shared space, 30 km/h",none,1.0,1.0,60.0
+tzouras_athens_safety|scenario17|e-scooter,tzouras_athens_safety,scenario17|e-scooter,scenario17 – e-scooter,,,e-scooter,"shared space, 30 km/h",none,1.0,1.0,60.0
+tzouras_athens_safety|scenario17|walk,tzouras_athens_safety,scenario17|walk,scenario17 – walk,,,walk,"shared space, 30 km/h",none,1.0,1.0,60.0
+tzouras_athens_safety|scenario20|car,tzouras_athens_safety,scenario20|car,scenario20 – car,,,car,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m","zebra, uncontrolled",1.0,0.0,100.0
+tzouras_athens_safety|scenario20|e-bike,tzouras_athens_safety,scenario20|e-bike,scenario20 – e-bike,,,e-bike,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m","zebra, uncontrolled",1.0,0.0,100.0
+tzouras_athens_safety|scenario20|e-scooter,tzouras_athens_safety,scenario20|e-scooter,scenario20 – e-scooter,,,e-scooter,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m","zebra, uncontrolled",1.0,0.0,100.0
+tzouras_athens_safety|scenario20|walk,tzouras_athens_safety,scenario20|walk,scenario20 – walk,,,walk,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m","zebra, uncontrolled",1.0,0.0,100.0
+tzouras_athens_safety|scenario30|car,tzouras_athens_safety,scenario30|car,scenario30 – car,,,car,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m","zebra, traffic lights",1.0,0.0,60.0
+tzouras_athens_safety|scenario30|e-bike,tzouras_athens_safety,scenario30|e-bike,scenario30 – e-bike,,,e-bike,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m","zebra, traffic lights",1.0,0.0,60.0
+tzouras_athens_safety|scenario30|e-scooter,tzouras_athens_safety,scenario30|e-scooter,scenario30 – e-scooter,,,e-scooter,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m","zebra, traffic lights",1.0,0.0,60.0
+tzouras_athens_safety|scenario30|walk,tzouras_athens_safety,scenario30|walk,scenario30 – walk,,,walk,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m","zebra, traffic lights",1.0,0.0,60.0
+tzouras_athens_safety|scenario31|car,tzouras_athens_safety,scenario31|car,scenario31 – car,,,car,"shared space, 30 km/h","zebra, uncontrolled",1.0,0.0,20.0
+tzouras_athens_safety|scenario31|e-bike,tzouras_athens_safety,scenario31|e-bike,scenario31 – e-bike,,,e-bike,"shared space, 30 km/h","zebra, uncontrolled",1.0,0.0,20.0
+tzouras_athens_safety|scenario31|e-scooter,tzouras_athens_safety,scenario31|e-scooter,scenario31 – e-scooter,,,e-scooter,"shared space, 30 km/h","zebra, uncontrolled",1.0,0.0,20.0
+tzouras_athens_safety|scenario31|walk,tzouras_athens_safety,scenario31|walk,scenario31 – walk,,,walk,"shared space, 30 km/h","zebra, uncontrolled",1.0,0.0,20.0
+tzouras_athens_safety|scenario34|car,tzouras_athens_safety,scenario34|car,scenario34 – car,,,car,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m","zebra, traffic lights",0.0,1.0,100.0
+tzouras_athens_safety|scenario34|e-bike,tzouras_athens_safety,scenario34|e-bike,scenario34 – e-bike,,,e-bike,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m","zebra, traffic lights",0.0,1.0,100.0
+tzouras_athens_safety|scenario34|e-scooter,tzouras_athens_safety,scenario34|e-scooter,scenario34 – e-scooter,,,e-scooter,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m","zebra, traffic lights",0.0,1.0,100.0
+tzouras_athens_safety|scenario34|walk,tzouras_athens_safety,scenario34|walk,scenario34 – walk,,,walk,"one-way urban road, 50 km/h, no cycle lane, sidewalk >= 1.5 m","zebra, traffic lights",0.0,1.0,100.0
+tzouras_athens_safety|scenario35|car,tzouras_athens_safety,scenario35|car,scenario35 – car,,,car,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m",none,1.0,1.0,20.0
+tzouras_athens_safety|scenario35|e-bike,tzouras_athens_safety,scenario35|e-bike,scenario35 – e-bike,,,e-bike,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m",none,1.0,1.0,20.0
+tzouras_athens_safety|scenario35|e-scooter,tzouras_athens_safety,scenario35|e-scooter,scenario35 – e-scooter,,,e-scooter,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m",none,1.0,1.0,20.0
+tzouras_athens_safety|scenario35|walk,tzouras_athens_safety,scenario35|walk,scenario35 – walk,,,walk,"one-way urban road, 50 km/h, no cycle lane, sidewalk < 1.5 m",none,1.0,1.0,20.0
