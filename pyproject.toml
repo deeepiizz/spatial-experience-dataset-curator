@@ -1,0 +1,13 @@
+[project]
+name = "spatial-experience-dataset-curator"
+version = "0.1.0"
+description = "Combines open-access studies of how people navigate and rate spaces into one trial-level dataset with provenance."
+requires-python = ">=3.10"
+dependencies = ["pandas>=2.0", "openpyxl>=3.1", "pyyaml>=6.0"]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

@@ -1,0 +1,21 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+  schedule:
+    - cron: "17 4 * * 1"   # weekly: catches a source that changed or disappeared on Zenodo
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+          cache: pip
+      - run: pip install -e ".[dev]"
+      - name: Download sources from Zenodo (md5 and licence checked)
+        run: python -m curator.pipeline
+      - run: pytest -v

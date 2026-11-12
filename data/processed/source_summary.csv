@@ -1,0 +1,5 @@
+source_id,environment_type,presentation,task,participants,trials,conditions,median_time_s,mean_errors,mean_rating,age_known_pct,gender_known_pct,licence,doi
+kumar_library_qr,indoor,physical,navigation,95,190,2,230.0,1.07,,0,0,CC-BY-4.0,10.5281/zenodo.23080208
+liu_vr_wayfinding,vr,virtual_reality,navigation,50,200,5,35.9,,,100,100,CC-BY-4.0,10.5281/zenodo.10784483
+mayor_vr_labyrinth,vr,virtual_reality,navigation,36,352,5,48.4,2.36,,100,100,CC-BY-4.0,10.5281/zenodo.18481749
+tzouras_athens_safety,urban,static_image,rating,122,5771,144,,,4.38,100,100,CC-BY-4.0,10.5281/zenodo.14967130

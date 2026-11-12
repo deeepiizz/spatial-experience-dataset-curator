@@ -1,0 +1,99 @@
+# Registry of every source the pipeline is allowed to use.
+# A source only enters the combined dataset if it is listed here with a licence
+# from ALLOWED_LICENCES in src/curator/schema.py. File checksums are taken from the
+# Zenodo API at download time and verified before any adapter reads a file.
+
+sources:
+  - id: liu_vr_wayfinding
+    title: Experiment data of VR way-finding research
+    creators: [Liu, Zhi]
+    year: 2024
+    zenodo_record: 10784483
+    doi: 10.5281/zenodo.10784483
+    licence: CC-BY-4.0
+    files: ["UserStudy.csv", "P*.csv"]
+    environment_type: vr
+    presentation: virtual_reality
+    task: navigation
+    design: between-subjects (5 guidance groups x 10 participants)
+    trial_definition: >
+      One trial = the interval between collecting target k-1 and target k
+      (4 targets per session). Trial 1 starts at the first log sample.
+    outcome_time: seconds between consecutive target collections
+    outcome_errors: not recorded
+    known_issues:
+      - The record has no description, so the five group codes (EDG, CEDG, LMG, CLMG, VG) are undocumented. They are kept verbatim.
+      - UserStudy.csv is not valid UTF-8 (timestamps contain mis-encoded CJK characters); it is read as latin-1 and only numeric/ASCII columns are used.
+      - P16CLMG.csv ends with 394 rows whose sensor columns are empty; they are dropped.
+      - Trial 1 includes any idle time before the participant started moving.
+
+  - id: mayor_vr_labyrinth
+    title: Spatial memory in Partially non-euclidean Virtual Reality (Dataset)
+    creators: [Mayor, Jesus; Alegre Landaburu, Javier; Lopez Fernandez, Daniel; Arranz Paraiso, Sandra]
+    year: 2026
+    zenodo_record: 18481749
+    doi: 10.5281/zenodo.18481749
+    licence: CC-BY-4.0
+    files: ["LabyrinthExperimentALL.xlsx"]
+    environment_type: vr
+    presentation: virtual_reality
+    task: navigation
+    design: within-subjects (5 labyrinth conditions, each with an outbound and a return phase)
+    trial_definition: One trial = one participant x condition x phase (outbound to goal, or return to start).
+    outcome_time: completion time of the phase in seconds
+    outcome_errors: number of times lost (wrong turns found by reversal detection)
+    known_issues:
+      - The description names four conditions, but the workbook has a fifth sheet (NoEucDoble) that is not described.
+      - The description mentions 10 Hz tracking logs, but the record only contains the summary workbook.
+      - Four participant-condition rows are empty (U07 Euc, U08 EucCol, U33 NoEucCol, U31 NoEucDoble) and are dropped.
+      - Each sheet ends with one or two unlabeled mean rows; they are dropped.
+      - Condition order per participant is not recorded, so learning effects cannot be separated from condition effects.
+
+  - id: kumar_library_qr
+    title: Anonymized Dataset for a QR-Assisted Indoor Navigation Framework Integrated with Koha
+    creators: [Kumar, Aman]
+    year: 2026
+    zenodo_record: 23080208
+    doi: 10.5281/zenodo.23080208
+    licence: CC-BY-4.0
+    files: ["Zenodo_QR_Koha_Navigation_Dataset_Package.zip"]
+    environment_type: indoor
+    presentation: physical
+    task: navigation
+    design: within-subjects, counterbalanced (conventional vs QR-assisted)
+    trial_definition: One trial = one book-finding task in a real academic library.
+    outcome_time: Duration_sec (end time minus start time)
+    outcome_errors: number of wrong location levels (3 - Accuracy_Score_0_3, over rack, side and shelf)
+    known_issues:
+      - No age or gender is recorded; only academic group (UG, PG, PhD).
+      - 63 of 190 durations are whole minutes (about 3 would be expected by chance), so some start and end times were probably recorded to the minute.
+      - 33 conventional tasks are marked Success_0_1 = 1 (correct book retrieved) but Accuracy_Score_0_3 = 0 (wrong rack, side and shelf). Both columns are kept as given; outcome_errors comes from the accuracy score.
+      - The data dictionary lists Route_Deviation_m, which is not in the data, and allows User_Group "UG / PhD", but 20 participants are "PG".
+
+  - id: tzouras_athens_safety
+    title: Perceived safety and first/last mile mode choices (image-based stated preference experiment)
+    creators: [Tzouras, Panagiotis G.]
+    year: 2025
+    zenodo_record: 14967130
+    doi: 10.5281/zenodo.14967130
+    licence: CC-BY-4.0
+    files: ["rating_dataset_perceivedSafetyChoices.csv"]
+    environment_type: urban
+    presentation: static_image
+    task: rating
+    design: within-subjects (12 scenarios x 4 transport modes per respondent)
+    trial_definition: One trial = one perceived-safety rating of one road scenario for one transport mode.
+    outcome_rating: perceived safety, 1 (very unsafe) to 7 (very safe)
+    known_issues:
+      - The description reports 129 respondents and 5,772 ratings; the file contains 122 respondents and 5,771 ratings.
+      - 12 respondents have fewer than the expected 48 ratings (one has only 13).
+      - The README age coding (1 = under 18, 2 = 18-30, ...) contradicts the file's own `young` flag, which marks every code-1 respondent as under 30. The codes are mapped one step down (1 = 18-30), and a test checks that the mapping agrees with `young`.
+      - The README lists code 3 twice (31-40 and 41-50) and calls the e-scooter mode `escooter`, while the file uses `escoot`.
+
+excluded:
+  - name: MIT Place Pulse 2.0
+    reason: Licence on the public Figshare mirror could not be confirmed and the file is 459 MB of pairwise image votes, not per-participant trials.
+  - name: Perceived safety and attractiveness of city streets in Frankfurt (Zenodo 7712811)
+    reason: CC-BY-2.0 and only aggregated per location, so there are no participant-level trials.
+  - name: Finding one's way in Hang Hau (Zenodo 23645342) and Virtual Environment Study of Evacuation (Zenodo 24051997)
+    reason: Records contain only a PDF, no data files.
